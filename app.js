@@ -1,13 +1,15 @@
-console.log("Hello world")
 
-let introField = document.querySelector(".intro-field")
-let button = document.querySelector("button")
+console.log("document is ", document)
+const Ebutton = document.querySelector('.enter-button')
 
-button.onclick = function(){
-    let intro = introField.value
-    let message = "I'm walking on the Sunshine" 
-    console.log(message)
-    document.write(message)
+Ebutton.onclick = function() {
+    const buttonMessage = document.querySelector('.start-message')
+    buttonMessage.textContent = "Welcome to Initial D, Enter your username to continue"
+    buttonMessage.style["color"] = "white"
 }
 
-
+Ebutton.onclick = function() {
+    const buttonMessage = document.querySelector('.start-message')
+    buttonMessage.textContent = ""
+    buttonMessage.style["color"] = "white"
+}
