@@ -7,9 +7,3 @@ Ebutton.onclick = function() {
     buttonMessage.textContent = "Welcome to Initial D, Enter your username to continue"
     buttonMessage.style["color"] = "white"
 }
-
-Ebutton.onclick = function() {
-    const buttonMessage = document.querySelector('.start-message')
-    buttonMessage.textContent = ""
-    buttonMessage.style["color"] = "white"
-}
