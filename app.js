@@ -7,3 +7,5 @@ Ebutton.onclick = function() {
     buttonMessage.textContent = "Welcome to Initial D, Enter your username to continue"
     buttonMessage.style["color"] = "white"
 }
+if (Ebutton) pressed >= 2 
+background-image;url('insert.gif');
