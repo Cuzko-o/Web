@@ -12,7 +12,9 @@ Ebutton.onclick = function() {
     const background = document.querySelector('body')
     if ( Ebuttoncounter >= 2) {
         background.style["background-image"] = "url('insert.gif')"
-        console.log("hi")
+        const buttonMessage = document.querySelector('.start-message')
+        buttonMessage.textContent = "Welcome, Press Start!"
+        buttonMessage.style["color"] = "white"
     }
   
 }
