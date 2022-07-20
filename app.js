@@ -8,11 +8,8 @@ Ebutton.onclick = function() {
     buttonMessage.textContent = "Welcome to Initial D, Enter your username to continue"
     buttonMessage.style["color"] = "white"
     Ebuttoncounter += 1
-    
-    
-    console.log("E b counter: " + Ebuttoncounter)
-    console.lOG("background is ", background.style)
-    const background = document.querySelector('.background-image')
+
+    const background = document.querySelector('body')
     if ( Ebuttoncounter >= 2) {
         background.style["background-image"] = "url('insert.gif')"
         console.log("hi")
