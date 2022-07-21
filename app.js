@@ -18,4 +18,47 @@ Ebutton.onclick = function() {
     }
   
 }
+let leftbuttoncounter = 0
+let rightbuttoncounter = 0
+
+document.onkeydown = (keyEvent)=>{
+    console.log("Keypressed: " + keyEvent.key)
+    console.log(leftbuttoncounter)
+    switch(keyEvent.key){
+        case "a": 
+        leftbuttoncounter += 1
+        break;
+        case "ArrowLeft":
+            leftbuttoncounter += 1
+            break;
+    }
+
+    if ( leftbuttoncounter = 1) {
+        const background = document.querySelector('body')
+        background.style["background-image"] = "url('apex.webp')"
+       
+    }
+document.onkeydown = (keyEvent2)=>{
+    console.log("Keypressed: " + keyEvent2.key)
+    console.log(rightbuttoncounter)
+    switch(keyEvent2.key){
+        case "d": 
+        rightbuttoncounter += 1
+        break;
+        case "ArrowRight":
+            rightbuttoncounter += 1
+            break;
+    }
+
+    if ( rightbuttoncounter = 1) {
+        const background = document.querySelector('body')
+        background.style["background-image"] = "url('blink.webp')"
+       
+    }
+
+
+}
+
+
+}
 
