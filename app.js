@@ -29,41 +29,28 @@ let rightbuttoncounter = 0
 document.onkeydown = (keyEvent)=>{
     console.log("Keypressed: " + keyEvent.key)
     console.log(leftbuttoncounter)
-    switch(keyEvent.key){
-        case "a": 
+    
+    if (keyEvent.key == "a"|| keyEvent.key == "ArrowLeft"){
         leftbuttoncounter += 1
-        break;
-        case "ArrowLeft":
-            leftbuttoncounter += 1
-            break;
     }
 
-    if ( leftbuttoncounter = 1) {
+    if ( leftbuttoncounter == 1) {
         const background = document.querySelector('body')
         background.style["background-image"] = "url('apex.webp')"
        
     }
-document.onkeydown = (keyEvent2)=>{
-    console.log("Keypressed: " + keyEvent2.key)
+    console.log("Keypressed: " + keyEvent.key)
     console.log(rightbuttoncounter)
-    switch(keyEvent2.key){
-        case "d": 
-        rightbuttoncounter += 1
-        break;
-        case "ArrowRight":
-            rightbuttoncounter += 1
-            break;
-    }
 
-    if ( rightbuttoncounter = 1) {
+    if (keyEvent.key == "d"|| keyEvent.key == "ArrowRight") { 
+        rightbuttoncounter += 1
+     }
+
+    if ( rightbuttoncounter == 1) {
         const background = document.querySelector('body')
         background.style["background-image"] = "url('blink.webp')"
        
     }
-
-
-}
-
 
 }
 
