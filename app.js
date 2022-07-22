@@ -20,6 +20,8 @@ Ebutton.onclick = function() {
         const buttonMessage = document.querySelector('.start-message')
         buttonMessage.textContent = "Welcome, Press Start!"
         buttonMessage.style["color"] = "white"
+        const button = document.createElement('button')
+        button.style.display = "inline"
     }
   
 }
@@ -53,4 +55,7 @@ document.onkeydown = (keyEvent)=>{
     }
 
 }
+
+const menu = ["main.gif", "kinotabi.gif", "insert.gif", "apex.webp", "blink.webp"]
+
 
