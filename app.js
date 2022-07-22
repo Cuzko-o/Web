@@ -20,7 +20,7 @@ Ebutton.onclick = function() {
         const buttonMessage = document.querySelector('.start-message')
         buttonMessage.textContent = "Welcome, Press Start!"
         buttonMessage.style["color"] = "white"
-        const button = document.createElement('button')
+        const button = document.querySelector('.start-button')
         button.style.display = "inline"
     }
   
