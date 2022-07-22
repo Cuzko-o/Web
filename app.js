@@ -8,7 +8,6 @@ let Ebuttoncounter = 0
 
 Ebutton.onclick = function() {
     const background = document.querySelector('body')
-    
     background.style["background-image"] = "url('kinotabi.gif')"
     const buttonMessage = document.querySelector('.start-message')
     buttonMessage.textContent = "Welcome to Initial D, Enter your username to continue"
