@@ -1,10 +1,15 @@
 
 console.log("document is ", document)
 const Ebutton = document.querySelector('.enter-button')
+const startbutton = document.querySelector('.start-button')
+const dbutton = document.querySelector('.retrogame-start-wrapper')
+const introbutton = doument.querySelector('.intro-field')
 
 
 
 let Ebuttoncounter = 0
+const gamePanel = document.querySelector('.game-panel')
+let userNameArea = gamePanel.querySelector('.user-name')
 
 Ebutton.onclick = function() {
     const background = document.querySelector('body')
@@ -32,7 +37,7 @@ document.onkeydown = (keyEvent)=>{
     console.log("Keypressed: " + keyEvent.key)
     console.log(leftbuttoncounter)
     
-    if (keyEvent.key == "a"|| keyEvent.key == "ArrowLeft"){
+    if (keyEvent.key == "1"){
         leftbuttoncounter += 1
     }
 
@@ -44,7 +49,7 @@ document.onkeydown = (keyEvent)=>{
     console.log("Keypressed: " + keyEvent.key)
     console.log(rightbuttoncounter)
 
-    if (keyEvent.key == "d"|| keyEvent.key == "ArrowRight") { 
+    if (keyEvent.key == "2") { 
         rightbuttoncounter += 1
      }
 
@@ -56,6 +61,33 @@ document.onkeydown = (keyEvent)=>{
 
 }
 
-const menu = ["main.gif", "kinotabi.gif", "insert.gif", "apex.webp", "blink.webp"]
+startbutton.onclick = function() {
+    const background = document.querySelector('body')
+    background.style["background-image"] = "url('solar.jpg')"
+    gamePanel.style.display = "block"
+    introbutton.style.display = "none"
+}
 
+let velocity = 0
 
+document.onkeydown = (keyEvent)=>{
+    console.log("Keypressed: " + keyEvent.key)
+    switch(keyEvent.key){
+        case "a": 
+        case "ArrowLeft":
+            velocity = velocity -1
+            break;
+        case "d": 
+        case "ArrowRight":
+            velocity = velocity +1
+            break;
+    }
+    console.log("Current velocity is", velocity)
+
+}
+
+function setPosition(player, position){
+    if(player){
+        player.style.left = position + "px"
+    }
+}
