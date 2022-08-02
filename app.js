@@ -1,9 +1,9 @@
+holler.onLoad(()=>{
 
 console.log("document is ", document)
 const Ebutton = document.querySelector('.enter-button')
 const startbutton = document.querySelector('.start-button')
-const dbutton = document.querySelector('.retrogame-start-wrapper')
-const introbutton = doument.querySelector('.intro-field')
+const introbutton = document.querySelector('.intro-field')
 
 
 
@@ -63,31 +63,14 @@ document.onkeydown = (keyEvent)=>{
 
 startbutton.onclick = function() {
     const background = document.querySelector('body')
-    background.style["background-image"] = "url('solar.jpg')"
+    background.style["background-image"] = "none"
+    const buttonMessage = document.querySelector('.start-message')
     gamePanel.style.display = "block"
     introbutton.style.display = "none"
+    startbutton.style.display = "none"
+    Ebutton.style.display = "none"
+    buttonMessage.style.display = "none"
+    
 }
 
-let velocity = 0
-
-document.onkeydown = (keyEvent)=>{
-    console.log("Keypressed: " + keyEvent.key)
-    switch(keyEvent.key){
-        case "a": 
-        case "ArrowLeft":
-            velocity = velocity -1
-            break;
-        case "d": 
-        case "ArrowRight":
-            velocity = velocity +1
-            break;
-    }
-    console.log("Current velocity is", velocity)
-
-}
-
-function setPosition(player, position){
-    if(player){
-        player.style.left = position + "px"
-    }
-}
+})
