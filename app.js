@@ -1,16 +1,42 @@
-holler.onLoad(()=>{
+console.log("Hello world")
 
 console.log("document is ", document)
 const Ebutton = document.querySelector('.enter-button')
 const startbutton = document.querySelector('.start-button')
+let gamePanel = document.querySelector(".game-panel")
+let introPanel = document.querySelector(".intro-panel")
+let userNameArea = gamePanel.querySelector(".user-name-area")
 const introbutton = document.querySelector('.intro-field')
-const sprite = document.querySelector('.sprite')
 
+let availableImages = [
+    "toyota.png",
+      "bmw.jpg" ,
+]
 
+function makeCharacter(id, image){
+    let imageTag = document.createElement("img")
+    imageTag.src = image
+    imageTag.setAttribute("class", "person")
+
+    let character = {
+        id:id,
+        imageName:image,
+        image:imageTag,
+        velocity:0,
+        position:(window.visualViewport.width / 2)
+    }
+
+    gamePanel.appendChild(imageTag)
+    characters.push(character)
+
+    return character
+}
+
+let player;
+let characters = [];
+let myName = "??"
 
 let Ebuttoncounter = 0
-const gamePanel = document.querySelector('.game-panel')
-// let userNameArea = gamePanel.querySelector('.user-name')
 
 Ebutton.onclick = function() {
     const background = document.querySelector('body')
@@ -29,84 +55,94 @@ Ebutton.onclick = function() {
         const button = document.querySelector('.start-button')
         button.style.display = "inline"
     }
+}
   
-}
-let leftbuttoncounter = 0
-let rightbuttoncounter = 0
-let velocity = 0
+holler.onLoad(()=>{
 
-// document.onkeydown = (keyEvent)=>{
-//     // console.log("Keypressed: " + keyEvent.key)
-//     // console.log(leftbuttoncounter)
+    holler.me((user)=>{
+        gamePanel.style.display="none"
+
+        availableImages.forEach(image=>{
+            let button = document.createElement("img")
+            button.classList = "character-option"
+            button.src = image
+
+            startbutton.onclick = ()=>{
+                startGame(image)
+            }
+
+            introPanel.appendChild(button)
+        })
+
+        console.log("user stuff is", user)
+        userNameArea.textContent = user.name
+        myName = user.name
+    })
+
+    holler.onClientEvent(message=>{
+        console.log(`Client event received: ${message}`)
+        let playerUpdate = JSON.parse(message)
+
+        if(playerUpdate.id != player?.id){
+
+            let otherPlayer = characters.find(o=>o.id == playerUpdate.id)
+            if(!otherPlayer){
+                otherPlayer = makeCharacter(playerUpdate.id, playerUpdate.imageName)
+            }
+
+            otherPlayer.position = playerUpdate.position
+            otherPlayer.velocity = playerUpdate.velocity
+            movePlayerImage(otherPlayer)
+        }
+    })
     
-//     // if (keyEvent.key == "1"){
-//     //     leftbuttoncounter += 1
-//     // }
+    function startGame(imageName){
+        player = makeCharacter(myName + "-" + imageName, imageName)
+        const background = document.querySelector('body')
+        background.style["background-image"] = "none"
+        const buttonMessage = document.querySelector('.start-message')
+        gamePanel.style.display = "block"
+        introbutton.style.display = "none"
+        startbutton.style.display = "none"
+        Ebutton.style.display = "none"
+        buttonMessage.style.display = "none"
+        console.log("player is", player)
+    }
 
-//     // if ( leftbuttoncounter == 1) {
-//     //     const background = document.querySelector('body')
-//     //     background.style["background-image"] = "url('apex.webp')"
-       
-//     // }
-//     // console.log("Keypressed: " + keyEvent.key)
-//     // console.log(rightbuttoncounter)
+    function movePlayerImage(player){
+        if(player){
+            player.image.style.left = player.position + "px"
+        }
+    }
 
-//     // if (keyEvent.key == "2") { 
-//     //     rightbuttoncounter += 1
-//     //  }
+    const doNextFrame = ()=>{
+        
+        characters.forEach(character=>{
+            character.position = character.position + character.velocity
+            movePlayerImage(character)
+        })
 
-//     // if ( rightbuttoncounter == 1) {
-//     //     const background = document.querySelector('body')
-//     //     background.style["background-image"] = "url('blink.webp')"
-       
-//     // }
-//     // console.log("Keypressed: " + keyEvent.key)
-//     // console.log(velocity)
+        setTimeout(doNextFrame)
+    }
 
-//     // if (keyEvent.key == "ArrowLeft"|| keyEvent.key == "ArrowRight") {
-//     //     console.log ("Water")
-//     //         velocity = velocity -1
-//     // }
-
-
-
-
-// }
-
-startbutton.onclick = function() {
-    const background = document.querySelector('body')
-    background.style["background-image"] = "none"
-    const buttonMessage = document.querySelector('.start-message')
-    gamePanel.style.display = "block"
-    introbutton.style.display = "none"
-    startbutton.style.display = "none"
-    Ebutton.style.display = "none"
-    buttonMessage.style.display = "none"
-    
-}
-
-let position = window.visualViewport.width / 2
+    doNextFrame()
 
 
-// document.onkeydown = (keyEvent)=>{
-//     console.log("Keypressed: " + keyEvent.key)
-//     switch(keyEvent.key){ 
-//         case "ArrowLeft":
-//             velocity = velocity -1
-//             break;
-//         case "ArrowRight":
-//             velocity = velocity +1
-//             break;
-//     }
-//     console.log("Current velocity is", velocity)
 
-// }
+    const sendPosition = ()=>{
+        if(player){
+            holler.appInstance.notifyClients(JSON.stringify({
+                id:player.id,
+                position:player.position,
+                velocity:player.velocity,
+                imageName:player.imageName
+            }))
+        }
+        setTimeout(sendPosition, 100)
+    }
+    sendPosition()
 
-// function setPosition(player, position){
-//     if(player){
-//         player.style.left = position + "px"
-//     }
-// }
+    let position = window.visualViewport.width / 2
 
 let speed = 5;
 var windowWidth = window.innerWidth;
@@ -147,5 +183,4 @@ const handleMovement = (e) => {
     }
 };
 
-window.addEventListener('keydown', handleMovement);
 })
