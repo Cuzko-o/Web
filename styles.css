@@ -2,6 +2,13 @@ body {
     background-size: cover;
     background-image:url('Main.gif');
 
+
 }
 
 .start-button{display: none;}
+ 
+.sprite {
+            position: absolute;
+
+        }
+    
