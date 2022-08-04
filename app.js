@@ -3,10 +3,18 @@ console.log("Hello world")
 console.log("document is ", document)
 const Ebutton = document.querySelector('.enter-button')
 const startbutton = document.querySelector('.start-button')
-let gamePanel = document.querySelector(".game-panel")
-let introPanel = document.querySelector(".intro-panel")
-let userNameArea = gamePanel.querySelector(".user-name-area")
 const introbutton = document.querySelector('.intro-field')
+
+// Game Panels
+let gamePanel = document.querySelector(".game-panel")
+let gamePanel2 = document.querySelector(".game-panel2")
+let gamePanel3 = document.querySelector(".game-panel3")
+let gamePanel4 = document.querySelector(".game-panel4")
+let gamePanel5 = document.querySelector(".game-panel5")
+let gamePanel6 = document.querySelector(".game-panel6")
+
+let introPanel = document.querySelector(".intro-panel")
+// let userNameArea = gamePanel.querySelector(".user-name-area")
 
 // Cars
 const car1 = document.querySelector('.sprite')
@@ -16,9 +24,6 @@ const car4 = document.querySelector('.sprite4')
 const car5 = document.querySelector('.sprite5')
 const car6 = document.querySelector('.sprite6')
 
-userNameArea.onclick = ()=>{
-    stuff
-}
 let availableImages = [
     "toyota.png",
       "bmw.jpg" ,
@@ -28,6 +33,8 @@ let availableImages = [
     "future.jpg"
 
 ]
+
+let popcorn = 0
 
 function makeCharacter(id, image){
     let imageTag = document.createElement("img")
@@ -53,6 +60,7 @@ availableImages.forEach(
         makeCharacter(currentimg)
     }
 )
+
 
 let player;
 let characters = [];
@@ -81,47 +89,70 @@ Ebutton.onclick = function() {
   
 holler.onLoad(()=>{
 
+    gamePanel.style.display="none"
+    gamePanel2.style.display="none"
+    gamePanel3.style.display="none"
+    gamePanel4.style.display="none"
+    gamePanel5.style.display="none"
+    gamePanel6.style.display="none"
     holler.me((user)=>{
-        gamePanel.style.display="none"
 
         startbutton.onclick = ()=>{
             console.log("TODO: make the player options show")
             const background = document.querySelector('body')
             background.style["background-image"] = "none"
             const buttonMessage = document.querySelector('.start-message')
-            gamePanel.style.display = "block"
+            introPanel.style.display = "block"
             introbutton.style.display = "none"
             startbutton.style.display = "none"
             Ebutton.style.display = "none"
             buttonMessage.style.display = "none"
         }
         car1.onclick = ()=>{
-            console.log("Character 1 selected")
+            popcorn = 1
+            console.log("character"+ popcorn)
+            gamePanel.style.display = "block"
+            introPanel.style.display = "none"
             makeCharacter
         }
 
         car2.onclick = ()=>{
-            console.log("Character 2 selected")
+            popcorn = 2
+            console.log("character"+ popcorn)
+            gamePanel2.style.display="block"
+            introPanel.style.display = "none"
             makeCharacter
         }
 
         car3.onclick = ()=>{
-            console.log("Character 3 selected")
+            popcorn = 3
+            console.log("character"+ popcorn)
+            gamePanel3.style.display="block"
+            introPanel.style.display = "none"
             makeCharacter
         }
 
         car4.onclick = ()=>{
-            console.log("Character 4 selected")
+            popcorn = 4
+            console.log("character"+ popcorn)
+            gamePanel4.style.display="block"
+            introPanel.style.display = "none"
             makeCharacter
         }
 
         car5.onclick = ()=>{
-            console.log("Character 5 selected")
+            popcorn = 5
+            console.log("character"+ popcorn)
+            gamePanel5.style.display="block"
+            introPanel.style.display = "none"
             makeCharacter
         }
 
         car6.onclick = ()=>{
-            console.log("Character 6 selected")
+            popcorn = 6
+            console.log("character"+ popcorn)
+            gamePanel6.style.display="block"
+            introPanel.style.display = "none"
             makeCharacter
         }
 
@@ -141,38 +172,38 @@ holler.onLoad(()=>{
 // let speed = 5;
 // var windowWidth = window.innerWidth;
 // var windowHeight = window.innerHeight;
-// sprite.style.top = windowHeight - 170
+// car1.style.top = windowHeight - 170
 
 // const toNum = (pxVal) => {
 //     return parseInt(pxVal, 10);
 // };
 
 // const handleMovement = (e) => {
-//     let left = toNum(sprite.style.left);
-//     let top = toNum(sprite.style.top);
+//     let left = toNum(car1.style.left);
+//     let top = toNum(car1.style.top);
     
 //     switch (e.key) {
 //         case 'ArrowLeft': 
 //         console.log ("arrowleft")
-//              if (left <= 0) return (sprite.style.left = 0)
-//             sprite.style.left = 0
-//             sprite.style.left = left - speed + 'px';
+//              if (left <= 0) return (car1.style.left = 0)
+//             car1.style.left = 0
+//             car1.style.left = left - speed + 'px';
 //             break;
 //         case 'ArrowRight':
 //             console.log ("arrowright")
-//             if (left >= windowWidth) return (sprite.style.left = windowWidth);
-//             sprite.style.left = left + speed + 'px';
+//             if (left >= windowWidth) return (car1.style.left = windowWidth);
+//             car1.style.left = left + speed + 'px';
 //             break;
 //         case 'ArrowUp':
 //             console.log ("arrowup")
 //             if (top <= 0) return (sprite.style.top = 0);
-//             sprite.style.top = 30
-//             sprite.style.top = top - speed + 'px';
+//             car1.style.top = 30
+//             car1.style.top = top - speed + 'px';
 //             break;
 //         case 'ArrowDown':
 //             console.log ("arrowdown")
-//             if (top >= windowHeight) return (sprite.style.top = windowHeight);
-//             sprite.style.top = top + speed + 'px';
+//             if (top >= windowHeight) return (car1.style.top = windowHeight);
+//             car1.style.top = top + speed + 'px';
 //             break;
 //     }
 // };
