@@ -12,6 +12,9 @@ let availableImages = [
     "toyota.png",
       "bmw.jpg" ,
       "350.jpg" ,
+      "camaro.jpg",
+    "charger.jpg",
+    "future.jpg"
 
 ]
 
@@ -81,14 +84,14 @@ holler.onLoad(()=>{
             Ebutton.style.display = "none"
             buttonMessage.style.display = "none"
         }
-        // availableImages.forEach(image=>{
-        //     let button = document.createElement("img")
-        //     button.classList = "character-option"
-        //     button.src = image
+        availableImages.forEach(image=>{
+            let button = document.createElement("img")
+            button.classList = "character-option"
+            button.src = image
 
-        //     startbutton.onclick = ()=>{
-        //         startGame(image)
-        //     }
+            button.onclick = ()=>{
+                gamePanel.style.display = "block"
+            }
 
         //     introPanel.appendChild(button)
         // })
@@ -97,6 +100,8 @@ holler.onLoad(()=>{
         // userNameArea.textContent = user.name
         // myName = user.name
     })
+
+})
 
 
     // function startGame(imageName){
@@ -156,4 +161,4 @@ holler.onLoad(()=>{
 //     }
 // };
 
-})
+}) 

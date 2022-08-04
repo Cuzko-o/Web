@@ -11,4 +11,13 @@ body {
             position: absolute;
 
         }
+
+        .character-option {
+            display:inline-block;
+            max-height: 200px;
+            border:1px solid white;
+        }
+        .character-option:hover {
+            border:1px solid grey;
+        }
     
