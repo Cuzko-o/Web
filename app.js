@@ -167,45 +167,51 @@ holler.onLoad(()=>{
     })
 
 
-//     let position = window.visualViewport.width / 2
+    let position = window.visualViewport.width / 2
 
-// let speed = 5;
-// var windowWidth = window.innerWidth;
-// var windowHeight = window.innerHeight;
-// car1.style.top = windowHeight - 170
+    if (popcorn >= 0){
+        let speed = 5;
+var windowWidth = window.innerWidth;
+var windowHeight = window.innerHeight;
+car1.style.top = windowHeight - 170
 
-// const toNum = (pxVal) => {
-//     return parseInt(pxVal, 10);
-// };
+const toNum = (pxVal) => {
+    return parseInt(pxVal, 10);
+};
 
-// const handleMovement = (e) => {
-//     let left = toNum(car1.style.left);
-//     let top = toNum(car1.style.top);
+const handleMovement = (e) => {
+    let left = toNum(car1.style.left);
+    let top = toNum(car1.style.top);
     
-//     switch (e.key) {
-//         case 'ArrowLeft': 
-//         console.log ("arrowleft")
-//              if (left <= 0) return (car1.style.left = 0)
-//             car1.style.left = 0
-//             car1.style.left = left - speed + 'px';
-//             break;
-//         case 'ArrowRight':
-//             console.log ("arrowright")
-//             if (left >= windowWidth) return (car1.style.left = windowWidth);
-//             car1.style.left = left + speed + 'px';
-//             break;
-//         case 'ArrowUp':
-//             console.log ("arrowup")
-//             if (top <= 0) return (sprite.style.top = 0);
-//             car1.style.top = 30
-//             car1.style.top = top - speed + 'px';
-//             break;
-//         case 'ArrowDown':
-//             console.log ("arrowdown")
-//             if (top >= windowHeight) return (car1.style.top = windowHeight);
-//             car1.style.top = top + speed + 'px';
-//             break;
-//     }
-// };
+    switch (e.key) {
+        case 'ArrowLeft': 
+        console.log ("arrowleft")
+             if (left <= 0) return (car1.style.left = 0)
+            car1.style.left = 0
+            car1.style.left = left - speed + 'px';
+            break;
+        case 'ArrowRight':
+            console.log ("arrowright")
+            if (left >= windowWidth) return (car1.style.left = windowWidth);
+            car1.style.left = left + speed + 'px';
+            break;
+        case 'ArrowUp':
+            console.log ("arrowup")
+            if (top <= 0) return (sprite.style.top = 0);
+            car1.style.top = 30
+            car1.style.top = top - speed + 'px';
+            break;
+        case 'ArrowDown':
+            console.log ("arrowdown")
+            if (top >= windowHeight) return (car1.style.top = windowHeight);
+            car1.style.top = top + speed + 'px';
+            break;
+    }
+};
+
+
+    }
+
+
 
 }) 
