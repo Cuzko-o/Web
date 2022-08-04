@@ -8,6 +8,17 @@ let introPanel = document.querySelector(".intro-panel")
 let userNameArea = gamePanel.querySelector(".user-name-area")
 const introbutton = document.querySelector('.intro-field')
 
+// Cars
+const car1 = document.querySelector('.sprite')
+const car2 = document.querySelector('.sprite2')
+const car3 = document.querySelector('.sprite3')
+const car4 = document.querySelector('.sprite4')
+const car5 = document.querySelector('.sprite5')
+const car6 = document.querySelector('.sprite6')
+
+userNameArea.onclick = ()=>{
+    stuff
+}
 let availableImages = [
     "toyota.png",
       "bmw.jpg" ,
@@ -34,7 +45,7 @@ function makeCharacter(id, image){
     // gamePanel.appendChild(imageTag)
     // characters.push(character)
 
-    // return character
+    return character
 }
 
 availableImages.forEach(
@@ -84,40 +95,45 @@ holler.onLoad(()=>{
             Ebutton.style.display = "none"
             buttonMessage.style.display = "none"
         }
-        availableImages.forEach(image=>{
-            let button = document.createElement("img")
-            button.classList = "character-option"
-            button.src = image
+        car1.onclick = ()=>{
+            console.log("Character 1 selected")
+            makeCharacter
+        }
 
-            button.onclick = ()=>{
-                gamePanel.style.display = "block"
-            }
+        car2.onclick = ()=>{
+            console.log("Character 2 selected")
+            makeCharacter
+        }
 
-        //     introPanel.appendChild(button)
+        car3.onclick = ()=>{
+            console.log("Character 3 selected")
+            makeCharacter
+        }
+
+        car4.onclick = ()=>{
+            console.log("Character 4 selected")
+            makeCharacter
+        }
+
+        car5.onclick = ()=>{
+            console.log("Character 5 selected")
+            makeCharacter
+        }
+
+        car6.onclick = ()=>{
+            console.log("Character 6 selected")
+            makeCharacter
+        }
+
+        //     //     introPanel.appendChild(button)
+        //     // })
+
+        //     // console.log("user stuff is", user)
+        //     // userNameArea.textContent = user.name
+        //     // myName = user.name
         // })
 
-        // console.log("user stuff is", user)
-        // userNameArea.textContent = user.name
-        // myName = user.name
     })
-
-})
-
-
-    // function startGame(imageName){
-    //     player = makeCharacter(myName + "-" + imageName, imageName)
-    //     const background = document.querySelector('body')
-    //     background.style["background-image"] = "none"
-    //     const buttonMessage = document.querySelector('.start-message')
-    //     gamePanel.style.display = "block"
-    //     introbutton.style.display = "none"
-    //     startbutton.style.display = "none"
-    //     Ebutton.style.display = "none"
-    //     buttonMessage.style.display = "none"
-    //     console.log("player is", player)
-    // }
-
-
 
 
 //     let position = window.visualViewport.width / 2
