@@ -177,7 +177,7 @@ function startgame (selectedCar) {
 
     document.body.appendChild(para);
     
-    para.src = "bmw.jpg";
+    para.src = "toyota.png";
     para.style.left = 100
 
 }
