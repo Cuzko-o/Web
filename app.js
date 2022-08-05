@@ -87,6 +87,57 @@ Ebutton.onclick = function() {
     }
 }
   
+// controls
+ 
+function startgame () {
+    console.log("ED SHEEERAN")
+    let speed = 5;
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    car1.style.top = windowHeight - 170
+
+    const toNum = (pxVal) => {
+        return parseInt(pxVal, 10);
+    };
+
+    const handleMovement = (e) => {
+        let left = toNum(car1.style.left);
+        let top = toNum(car1.style.top);
+        console.log("James is eating a bagel")
+
+        switch (e.key) {
+            case 'ArrowLeft': 
+                console.log ("arrowleft")
+                if (left <= 0) return (car1.style.left = 0)
+                    car1.style.left = 0
+                car1.style.left = left - speed + 'px';
+                break;
+            case 'ArrowRight':
+                console.log ("arrowright")
+                if (left >= windowWidth) return (car1.style.left = windowWidth);
+                car1.style.left = left + speed + 'px';
+                break;
+            case 'ArrowUp':
+                console.log ("arrowup")
+                if (top <= 0) return (car1.style.top = 0);
+                car1.style.top = 30
+                car1.style.top = top - speed + 'px';
+                break;
+            case 'ArrowDown':
+                console.log ("arrowdown")
+                if (top >= windowHeight) return (car1.style.top = windowHeight);
+                car1.style.top = top + speed + 'px';
+                break;
+        }
+        
+    };
+
+    document.onkeydown=handleMovement
+
+}
+
+// starting the Game
+
 holler.onLoad(()=>{
 
     gamePanel.style.display="none"
@@ -113,7 +164,8 @@ holler.onLoad(()=>{
             console.log("character"+ popcorn)
             gamePanel.style.display = "block"
             introPanel.style.display = "none"
-            makeCharacter
+            startgame()
+            makeCharacter()
         }
 
         car2.onclick = ()=>{
@@ -121,7 +173,8 @@ holler.onLoad(()=>{
             console.log("character"+ popcorn)
             gamePanel2.style.display="block"
             introPanel.style.display = "none"
-            makeCharacter
+            startgame()
+            makeCharacter()
         }
 
         car3.onclick = ()=>{
@@ -129,7 +182,8 @@ holler.onLoad(()=>{
             console.log("character"+ popcorn)
             gamePanel3.style.display="block"
             introPanel.style.display = "none"
-            makeCharacter
+            startgame()
+            makeCharacter()
         }
 
         car4.onclick = ()=>{
@@ -137,7 +191,8 @@ holler.onLoad(()=>{
             console.log("character"+ popcorn)
             gamePanel4.style.display="block"
             introPanel.style.display = "none"
-            makeCharacter
+            startgame()
+            makeCharacter()
         }
 
         car5.onclick = ()=>{
@@ -145,7 +200,8 @@ holler.onLoad(()=>{
             console.log("character"+ popcorn)
             gamePanel5.style.display="block"
             introPanel.style.display = "none"
-            makeCharacter
+            startgame()
+            makeCharacter()
         }
 
         car6.onclick = ()=>{
@@ -153,7 +209,8 @@ holler.onLoad(()=>{
             console.log("character"+ popcorn)
             gamePanel6.style.display="block"
             introPanel.style.display = "none"
-            makeCharacter
+            startgame()
+            makeCharacter()
         }
 
         //     //     introPanel.appendChild(button)
@@ -168,50 +225,5 @@ holler.onLoad(()=>{
 
 
     let position = window.visualViewport.width / 2
-
-    if (popcorn >= 0){
-        let speed = 5;
-var windowWidth = window.innerWidth;
-var windowHeight = window.innerHeight;
-car1.style.top = windowHeight - 170
-
-const toNum = (pxVal) => {
-    return parseInt(pxVal, 10);
-};
-
-const handleMovement = (e) => {
-    let left = toNum(car1.style.left);
-    let top = toNum(car1.style.top);
-    
-    switch (e.key) {
-        case 'ArrowLeft': 
-        console.log ("arrowleft")
-             if (left <= 0) return (car1.style.left = 0)
-            car1.style.left = 0
-            car1.style.left = left - speed + 'px';
-            break;
-        case 'ArrowRight':
-            console.log ("arrowright")
-            if (left >= windowWidth) return (car1.style.left = windowWidth);
-            car1.style.left = left + speed + 'px';
-            break;
-        case 'ArrowUp':
-            console.log ("arrowup")
-            if (top <= 0) return (sprite.style.top = 0);
-            car1.style.top = 30
-            car1.style.top = top - speed + 'px';
-            break;
-        case 'ArrowDown':
-            console.log ("arrowdown")
-            if (top >= windowHeight) return (car1.style.top = windowHeight);
-            car1.style.top = top + speed + 'px';
-            break;
-    }
-};
-
-
-    }
-
-
 
 }) 
