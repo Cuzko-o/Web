@@ -1,5 +1,7 @@
 console.log("Hello world")
 
+const para = document.createElement("img");
+para.style.position = "absolute"
 console.log("document is ", document)
 const Ebutton = document.querySelector('.enter-button')
 const startbutton = document.querySelector('.start-button')
@@ -17,12 +19,20 @@ let introPanel = document.querySelector(".intro-panel")
 // let userNameArea = gamePanel.querySelector(".user-name-area")
 
 // Cars
-const car1 = document.querySelector('.sprite')
-const car2 = document.querySelector('.sprite2')
-const car3 = document.querySelector('.sprite3')
-const car4 = document.querySelector('.sprite4')
-const car5 = document.querySelector('.sprite5')
-const car6 = document.querySelector('.sprite6')
+const car1 = document.querySelector('.jdm')
+const car2 = document.querySelector('.beamer')
+const car3 = document.querySelector('.nissan')
+const car4 = document.querySelector('.chevorlet')
+const car5 = document.querySelector('.srt')
+const car6 = document.querySelector('.marty')
+
+// sprites
+const sprite = document.querySelector('.sprite')
+const sprite2 = document.querySelector('.sprite2')
+const sprite3 = document.querySelector('.sprite3')
+const sprite4 = document.querySelector('.sprite4')
+const sprite5 = document.querySelector('.sprite5')
+const sprite6 = document.querySelector('.sprite6')
 
 let availableImages = [
     "toyota.png",
@@ -34,7 +44,7 @@ let availableImages = [
 
 ]
 
-let popcorn = 0
+let carNumber = 0
 
 function makeCharacter(id, image){
     let imageTag = document.createElement("img")
@@ -86,31 +96,62 @@ Ebutton.onclick = function() {
         button.style.display = "inline"
     }
 }
-  
+
 // controls
  
-function startgame () {
+function startgame (selectedCar) {
+    carNumber = selectedCar
     console.log("ED SHEEERAN")
+    let mommy = ""
     let speed = 5;
     var windowWidth = window.innerWidth;
     var windowHeight = window.innerHeight;
     car1.style.top = windowHeight - 170
 
+    console.log("+rawr xd"+ carNumber)
     const toNum = (pxVal) => {
         return parseInt(pxVal, 10);
     };
 
     const handleMovement = (e) => {
+        if (carNumber == 1) {
+            console.log("RAHHH")
+            mommy = document.querySelector(".jdm")
+        } else if (carNumber == 2){
+            mommy = document.querySelector(".beamer")
+        } else if (carNumber == 3){
+            mommy = document.querySelector(".nissan")
+        } else if (carNumber == 4){
+            mommy = document.querySelector(".chevorlet")
+        } else if (carNumber == 5){
+            mommy = document.querySelector(".srt")
+        } else if (carNumber == 6){
+            mommy = document.querySelector(".marty")
+        }
+        
+        let car1 = mommy
         let left = toNum(car1.style.left);
         let top = toNum(car1.style.top);
-        console.log("James is eating a bagel")
+        console.log("James is eating a bagel" + car1)
+        console.log(carNumber)
+
+
+        let playerUpdate = {
+            carNumber:carNumber,
+            left:left,
+            top:top,
+        }
+
+        holler.appInstance.notifyClients(JSON.stringify(playerUpdate))
+
 
         switch (e.key) {
             case 'ArrowLeft': 
                 console.log ("arrowleft")
-                if (left <= 0) return (car1.style.left = 0)
-                    car1.style.left = 0
-                car1.style.left = left - speed + 'px';
+                 if (left <= 0) return (car1.style.left = 0)
+                car1.style.left = 21
+                console.log(car1)
+                 car1.style.left = left - speed + 'px';
                 break;
             case 'ArrowRight':
                 console.log ("arrowright")
@@ -133,6 +174,11 @@ function startgame () {
     };
 
     document.onkeydown=handleMovement
+
+    document.body.appendChild(para);
+    
+    para.src = "bmw.jpg";
+    para.style.left = 100
 
 }
 
@@ -159,71 +205,77 @@ holler.onLoad(()=>{
             Ebutton.style.display = "none"
             buttonMessage.style.display = "none"
         }
-        car1.onclick = ()=>{
-            popcorn = 1
-            console.log("character"+ popcorn)
+        sprite.onclick = ()=>{
+            console.log("car clicked")
+            console.log("character"+ carNumber)
             gamePanel.style.display = "block"
             introPanel.style.display = "none"
-            startgame()
+            startgame(1)
             makeCharacter()
         }
 
-        car2.onclick = ()=>{
-            popcorn = 2
-            console.log("character"+ popcorn)
+        sprite2.onclick = ()=>{
+            console.log("character"+ carNumber)
             gamePanel2.style.display="block"
             introPanel.style.display = "none"
-            startgame()
+            startgame(2)
             makeCharacter()
         }
 
-        car3.onclick = ()=>{
-            popcorn = 3
-            console.log("character"+ popcorn)
+        sprite3.onclick = ()=>{
+            console.log("character"+ carNumber)
             gamePanel3.style.display="block"
             introPanel.style.display = "none"
-            startgame()
+            startgame(3)
             makeCharacter()
         }
 
-        car4.onclick = ()=>{
-            popcorn = 4
-            console.log("character"+ popcorn)
+        sprite4.onclick = ()=>{
+            console.log("character"+ carNumber)
             gamePanel4.style.display="block"
             introPanel.style.display = "none"
-            startgame()
+            startgame(4)
             makeCharacter()
         }
 
-        car5.onclick = ()=>{
-            popcorn = 5
-            console.log("character"+ popcorn)
+        sprite5.onclick = ()=>{
+            console.log("character"+ carNumber)
             gamePanel5.style.display="block"
             introPanel.style.display = "none"
-            startgame()
+            startgame(5)
             makeCharacter()
         }
 
-        car6.onclick = ()=>{
-            popcorn = 6
-            console.log("character"+ popcorn)
+        sprite6.onclick = ()=>{
+            console.log("character"+ carNumber)
             gamePanel6.style.display="block"
             introPanel.style.display = "none"
-            startgame()
+            startgame(6)
             makeCharacter()
         }
-
-        //     //     introPanel.appendChild(button)
-        //     // })
-
-        //     // console.log("user stuff is", user)
-        //     // userNameArea.textContent = user.name
-        //     // myName = user.name
-        // })
-
     })
-
 
     let position = window.visualViewport.width / 2
 
-}) 
+
+    holler.me(()=>{
+        holler.onClientEvent(stringFromOthers=>{
+            let incomingObject = JSON.parse(stringFromOthers)
+            console.log("me (car # " + carNumber + ") got new info", incomingObject)
+
+            // if this is not our car
+            if(incomingObject.carNumber != carNumber){
+                console.log("Got somebody elses position", incomingObject.left, incomingObject.top)
+                // TODO: show car if not already showing
+                // TODO: move car to new position
+                para.style.left = incomingObject.left
+                para.style.top = incomingObject.top
+            // }
+             }
+   
+        })
+   
+    }) 
+   
+
+})

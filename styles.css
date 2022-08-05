@@ -8,10 +8,33 @@ body {
 .start-button{display: none;}
  
 .sprite {
-            position: absolute;
+    position: absolute;
 
         }
 
+.jdm {
+    position: absolute;
+}
+
+.beamer {
+    position: absolute;
+}
+
+.nissan {
+    position: absolute;
+}
+
+.chevorlet {
+    position: absolute;
+}
+
+.srt {
+    position: absolute;
+}
+
+.marty {
+    position: absolute;
+}
 
 .character-option {
             display:inline-block;
